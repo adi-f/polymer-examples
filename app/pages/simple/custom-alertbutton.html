@@ -1,35 +1,42 @@
 <!doctype html>
 <html>
-	<head></head>
-	<body>
-		<script>
-			// creating a custom button
-			var AlertButtonPrototpe = Object.create(HTMLButtonElement.prototype);
-			AlertButtonPrototpe.createdCallback = function() {
-			  this.textContent = "Don't click me!";
-			  this.addEventListener("click", function(){
-				alert("Why you clicked me, I said non't do this...");
-			  })
-			};
+	<head>
+        <script>
 
-			var AlertButton = document.registerElement("alert-button", {
-			  prototype: AlertButtonPrototpe,
-			  extends: 'button'
-			});
-			
-			// create a nice panel
-			var x = document.registerElement("round-panel", {
-				prototype: Object.create(Object.create(HTMLElement.prototype), {
-					createdCallback: {
-						value: function(){
-						this.textContent = "hello";
-						}
-					}
-				})
-			});
-		</script>
+            // creating a custom button
+            var AlertButtonPrototpe = Object.create(HTMLButtonElement.prototype);
+            AlertButtonPrototpe.createdCallback = function() {
+                this.textContent = "Don't click me!";
+                this.addEventListener("click", function(){
+                    alert("Why you clicked me? I said don't do this...");
+                });
+            };
+
+            var AlertButton = document.registerElement("alert-button", {
+                prototype: AlertButtonPrototpe,
+                extends: 'button'
+            });
+
+            // create a nice panel
+            var RoundPanelPrototype = Object.create(HTMLElement.prototype);
+
+            RoundPanelPrototype.createdCallback = function() {
+                this.style.border = "3px solid"
+                this.style.margin = "1em";
+                this.style.padding = "2em";
+                this.style.display = "inline-block"
+                this.style.borderRadius  = "1em";
+                this.style.borderColor = this.getAttribute('border');
+            };
+
+            document.registerElement('round-panel', {prototype: RoundPanelPrototype});
+        </script>
+    </head>
+
+	<body>
+        <round-panel border="olive" >
+            <button>HTML Button</button>
+            <button is="alert-button"></button>
+        </round-panel><!-- delete me, i don't work -->
 	</body>
-	<button>HTML Button</button>
-	<button is="alert-button"/>
-	<round-panel/><!-- delete me, i don't work -->
 </html>
