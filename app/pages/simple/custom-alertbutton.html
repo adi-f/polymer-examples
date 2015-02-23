@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+	<head></head>
+	<body>
+		<script>
+			// creating a custom button
+			var AlertButtonPrototpe = Object.create(HTMLButtonElement.prototype);
+			AlertButtonPrototpe.createdCallback = function() {
+			  this.textContent = "Don't click me!";
+			  this.addEventListener("click", function(){
+				alert("Why you clicked me, I said non't do this...");
+			  })
+			};
+
+			var AlertButton = document.registerElement("alert-button", {
+			  prototype: AlertButtonPrototpe,
+			  extends: 'button'
+			});
+			
+			// create a nice panel
+			var x = document.registerElement("round-panel", {
+				prototype: Object.create(Object.create(HTMLElement.prototype), {
+					createdCallback: {
+						value: function(){
+						this.textContent = "hello";
+						}
+					}
+				})
+			});
+		</script>
+	</body>
+	<button>HTML Button</button>
+	<button is="alert-button"/>
+	<round-panel/><!-- delete me, i don't work -->
+</html>
