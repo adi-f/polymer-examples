@@ -1,35 +1,38 @@
 <!doctype html>
 <html>
 	<head>
+        <meta charset="UTF-8">
+        <title>Custom Components</title>
         <script>
+            (function() {
+                // creating a custom button
+                var AlertButtonPrototpe = Object.create(HTMLButtonElement.prototype);
+                AlertButtonPrototpe.createdCallback = function () {
+                    this.textContent = "Don't click me!";
+                    this.addEventListener("click", function () {
+                        alert("Why you clicked me? I said don't do this...");
+                    });
+                };
 
-            // creating a custom button
-            var AlertButtonPrototpe = Object.create(HTMLButtonElement.prototype);
-            AlertButtonPrototpe.createdCallback = function() {
-                this.textContent = "Don't click me!";
-                this.addEventListener("click", function(){
-                    alert("Why you clicked me? I said don't do this...");
+                var AlertButton = document.registerElement("alert-button", {
+                    prototype: AlertButtonPrototpe,
+                    extends: 'button'
                 });
-            };
 
-            var AlertButton = document.registerElement("alert-button", {
-                prototype: AlertButtonPrototpe,
-                extends: 'button'
-            });
+                // create a nice panel
+                var RoundPanelPrototype = Object.create(HTMLElement.prototype);
 
-            // create a nice panel
-            var RoundPanelPrototype = Object.create(HTMLElement.prototype);
+                RoundPanelPrototype.createdCallback = function () {
+                    this.style.border = "3px solid";
+                    this.style.margin = "1em";
+                    this.style.padding = "2em";
+                    this.style.display = "inline-block";
+                    this.style.borderRadius = "1em";
+                    this.style.borderColor = this.getAttribute('border');
+                };
 
-            RoundPanelPrototype.createdCallback = function() {
-                this.style.border = "3px solid"
-                this.style.margin = "1em";
-                this.style.padding = "2em";
-                this.style.display = "inline-block"
-                this.style.borderRadius  = "1em";
-                this.style.borderColor = this.getAttribute('border');
-            };
-
-            document.registerElement('round-panel', {prototype: RoundPanelPrototype});
+                document.registerElement('round-panel', {prototype: RoundPanelPrototype});
+            })();
         </script>
     </head>
 

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <style>
+            body {
+                background: lightblue;
+            }
+
+            .round-panel {
+                border: 3px solid olive;
+                margin: 1em;
+                padding: 0.5em;
+                display: inline-block;
+                border-radius: 1em;
+            }
+
+            .bad-news {
+                border-color: darkred;
+                background-color: lightcoral;
+            }
+
+            .good-news {
+                border-color: darkred;
+                background-color: lightgreen;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <!-- an import is not an include, this div is not visible -->
+        <div>I'm in a import, I'm not visible!</div>
+
+        <template id="message_1">
+            <div class="round-panel bad-news">It's could outside</div>
+        </template>
+
+        <template id="message_2">
+            <div class="round-panel good-news">It's the right season to go skiing! (or snowboarding)</div>
+        </template>
+
+        <!-- without a template -->
+        <div id="message_3" class="round-panel good-news">You may also to go sledding</div>
+    </body>
+</html>
+
+
+
+
+
+
+

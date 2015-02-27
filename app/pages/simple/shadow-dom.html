@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+        <title>Shadow DOM</title>
+
+        <style>
+            .red-info {
+                background: indianred;
+                padding: 0.3em;
+                border-radius: 0.6em;
+                display: inline-block;
+            }
+
+            .round-panel {
+                border: 3px solid olive;
+                margin: 1em;
+                padding: 0.5em;
+                display: inline-block;
+                border-radius: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="red-info">I got selected by <b>.red-info</b></div>
+
+        <div id="shadow-host" class="round-panel">
+            <div>I'm in the twilight</div>
+        </div>
+
+        <script>
+            (function(){
+
+                // simple shadow host
+                var shadowHost = document.getElementById("shadow-host")
+                var shadowRoot = shadowHost.createShadowRoot();
+                console.log("Shadow root type: " + shadowRoot.nodeName);
+                shadowRoot.innerHTML = '<div class="red-info"><div class="red-info">I also have the  <b>.red-info</b> class</div></div>';
+            })();
+        </script>
+    </body>
+</html>
