@@ -21,23 +21,64 @@
                 display: inline-block;
                 border-radius: 1em;
             }
+
+            .square {
+                display: inline-block;
+                width: 30px;
+                height: 30px;
+                background: dodgerblue;
+            }
         </style>
+
+        <template id="shadow-content">
+            <style>
+                /* inside a template, not applied outside */
+                .round-panel {
+                    border: 5px dotted blue;
+                    margin: 0.5em;
+                    padding: 0.5em;
+                    display: inline-block;
+                    border-radius: 10em;
+                }
+            </style>
+            <!-- style of the shadow root (template) is applied, not of the doument -->
+            <div class="round-panel">
+                <content/>
+            </div>
+        </template>
     </head>
     <body>
         <div class="red-info">I got selected by <b>.red-info</b></div>
 
         <div id="shadow-host" class="round-panel">
-            <div>I'm in the twilight</div>
+            <div>I'm in the twilight, I'm not shown</div>
         </div>
+
+        <div id="shadow-host-with-content" class="round-panel">
+            <!-- style of the document is applied for the content, not of the shadow root -->
+            <div class="square"/>
+        </div>
+
+
+
 
         <script>
             (function(){
 
-                // simple shadow host
-                var shadowHost = document.getElementById("shadow-host")
+                // simple shadow DOM example
+                var shadowHost = document.getElementById("shadow-host");
                 var shadowRoot = shadowHost.createShadowRoot();
                 console.log("Shadow root type: " + shadowRoot.nodeName);
                 shadowRoot.innerHTML = '<div class="red-info"><div class="red-info">I also have the  <b>.red-info</b> class</div></div>';
+
+                // with content inside the shadow DOM
+                document
+                    .getElementById("shadow-host-with-content")
+                    .createShadowRoot()
+                    .appendChild(
+                        document.importNode(document.getElementById('shadow-content').content, true)
+                    );
+
             })();
         </script>
     </body>
