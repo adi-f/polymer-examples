@@ -1,0 +1,45 @@
+<template id="post-it">
+    <style>
+        .glue-bar {
+            background: #faf9b9;
+            height: 2em;
+        }
+
+        .content {
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            font-size: 16px;
+            color: dimgrey;
+            background: #fffebb;
+            padding: 1em;
+            min-height: 13em;
+            width: 15em;
+        }
+        .paper {
+            display: inline-block;
+            box-shadow: 10px 10px 5px #AAA;
+        }
+    </style>
+
+    <div class="paper">
+        <div class="glue-bar"></div>
+        <div class="content">
+            <content/>
+        </div>
+    </div>
+</template>
+
+<script>
+    (function(){
+        // note: document = importing page's document, document.currentScript.ownerDocument = this file's document
+        var template = document.currentScript.ownerDocument.getElementById('post-it');
+
+        // create web component
+        var PostItPrototype = Object.create(HTMLElement.prototype);
+        PostItPrototype.createdCallback = function () {
+            this.createShadowRoot().appendChild(document.importNode(template.content, true));
+            this.style.display = "inline-block";
+            this.style.margin = "1em";
+        };
+        document.registerElement('post-it', {prototype: PostItPrototype});
+    })();
+</script>
