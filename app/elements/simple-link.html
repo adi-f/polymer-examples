@@ -1,0 +1,26 @@
+<!-- import Polymer -->
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="simple-link" attributes="href text">
+    <template>
+        <style>
+            a {
+                color: black;
+                background-color: lightskyblue;
+                border-radius: 1em;
+                padding: 0em 0.2em;
+            }
+            a:visited {
+                text-decoration: none;
+                background-color: plum;
+            }
+        </style>
+        <a href="{{href}}" title="{{href}}">{{text}}</a>
+    </template>
+    <script>
+        // this script also registers the new element
+        Polymer({
+            href: '#' // default value if attribute 'href' is missing
+        });
+    </script>
+</polymer-element>

@@ -1,0 +1,39 @@
+<!-- import Polymer -->
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="color-picker" attributes="href text">
+    <template>
+        <style>
+            label {
+                width: 5em;
+            }
+            input {
+                width: 10em;
+            }
+            /* no problem to select too many elements - only acts inside the element (shadow DOM) */
+            div, span, label, input {
+                display: inline-block;
+            }
+
+            span {
+                background-color: rgb({{red}}, {{green}}, {{blue}});
+                height: 1.5em;
+                width: 15em;
+            }
+        </style>
+        <div style="width: 15em">
+            <span></span>
+            <div><label for="red">Red</label><input id="red" type="range" min="0" max="255" value="{{red}}"/></div>
+            <div><label for="green">Green</label><input id="green" type="range" min="0" max="255" value="{{green}}"/></div>
+            <div><label for="blue">Blue</label><input id="blue" type="range" min="0" max="255" value="{{blue}}"/></div>
+        </div>
+    </template>
+    <script>
+        // this script also registers the new element
+        Polymer({
+            red: "128",
+            green: "128",
+            blue: "128"
+        });
+    </script>
+</polymer-element>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- adding features not yet natively supported (chrome doesen't require this -->
+        <script src="../../../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+
+        <!-- note: the Polymer library is included by the import -->
+        <!-- importing the same import multiple times results in one single import - no duplications -->
+        <link rel="import" href="../../elements/post-it.html"/>
+        <link rel="import" href="../../elements/simple-link.html"/>
+        <link rel="import" href="../../elements/color-picker.html"/>
+
+        <style>
+            p {
+                margin: 50px 0;
+            }
+        </style>
+    </head>
+    <body>
+
+        <post-it>
+            <a href="http://www.polymer-project.org/">Polymer</a>
+            is a nice tool to work with
+            <a href="http://webcomponents.org/">Web Components</a>
+        </post-it>
+
+        <p/>
+
+        <simple-link href="http://www.polymer-project.org" text="Polymer"></simple-link> is nice.
+        Visit <simple-link href="http://www.html5rocks.com/" text="HTML 5 rocks"></simple-link> for information about cool HTML 5 features.
+
+        <p/>
+
+        <color-picker></color-picker>
+    </body>
+</html>

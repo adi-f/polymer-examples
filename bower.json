@@ -1,0 +1,20 @@
+{
+  "name": "polymer-examples",
+  "version": "0.0.1",
+  "authors": [
+    "adfa <adrian.fahrer@mimacom.com>"
+  ],
+  "description": "Examples with Polymer and Web Components",
+  "license": "GPL",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.5"
+  }
+}

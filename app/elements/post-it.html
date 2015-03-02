@@ -1,0 +1,35 @@
+<!-- import Polymer -->
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<!-- 'noscript' = simple element without JS, automatically registered -->
+<polymer-element name="post-it" noscript>
+    <template>
+            <style>
+                .glue-bar {
+                    background: #faf9b9;
+                    height: 2em;
+                }
+
+                .content {
+                    font-family: "Comic Sans MS", cursive, sans-serif;
+                    font-size: 16px;
+                    color: dimgrey;
+                    background: #fffebb;
+                    padding: 1em;
+                    min-height: 13em;
+                    width: 15em;
+                }
+                .paper {
+                    display: inline-block;
+                    box-shadow: 10px 10px 5px #AAA;
+                }
+            </style>
+
+            <div class="paper">
+                <div class="glue-bar"></div>
+                <div class="content">
+                    <content/>
+                </div>
+            </div>
+    </template>
+</polymer-element>
