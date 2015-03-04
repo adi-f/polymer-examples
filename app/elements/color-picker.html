@@ -19,21 +19,48 @@
                 background-color: rgb({{red}}, {{green}}, {{blue}});
                 height: 1.5em;
                 width: 15em;
+                text-align: center;
+            text-shadow: 2px 2px 1px white;
             }
         </style>
         <div style="width: 15em">
-            <span></span>
+            <span>{{color}}</span>
             <div><label for="red">Red</label><input id="red" type="range" min="0" max="255" value="{{red}}"/></div>
             <div><label for="green">Green</label><input id="green" type="range" min="0" max="255" value="{{green}}"/></div>
             <div><label for="blue">Blue</label><input id="blue" type="range" min="0" max="255" value="{{blue}}"/></div>
         </div>
     </template>
     <script>
-        // this script also registers the new element
-        Polymer({
-            red: "128",
-            green: "128",
-            blue: "128"
-        });
+        (function(){
+            // this script also registers the new element
+            Polymer({
+                // note: the default value defines the type
+                red: 128,
+                green: 128,
+                blue: 128,
+                color: "#808080",
+
+                // changed listeners: propertyName + 'Changed' = changed-listener
+                // wrapping the same function required, bug?
+                redChanged: function() {colorChanged.apply(this)},
+                greenChanged: function() {colorChanged.apply(this)},
+                blueChanged: function() {colorChanged.apply(this)}
+            });
+
+            function colorChanged() {
+                var r = toHex(this.red);
+                var g = toHex(this.green);
+                var b = toHex(this.blue);
+                this.color = "#" + r + g + b;
+
+                function toHex(number){
+                    var value = number.toString(16).toUpperCase();
+                    while(value.length < 2){
+                        value = "0" + value;
+                    }
+                    return value;
+                }
+            }
+        })();
     </script>
 </polymer-element>
