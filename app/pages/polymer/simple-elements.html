@@ -9,10 +9,15 @@
         <link rel="import" href="../../elements/post-it.html"/>
         <link rel="import" href="../../elements/simple-link.html"/>
         <link rel="import" href="../../elements/color-picker.html"/>
+        <link rel="import" href="../../elements/simple-squares.html"/>
 
         <style>
             p {
                 margin: 50px 0;
+            }
+
+            .simple-square {
+                background-color: #7986cb;
             }
         </style>
     </head>
@@ -32,5 +37,14 @@
         <p/>
 
         <color-picker></color-picker>
+
+        <p/>
+
+        <simple-square-shadow>
+            <simple-square-no-shadow>
+                <simple-square-shadow/>
+            </simple-square-no-shadow>
+        </simple-square-shadow>
+
     </body>
 </html>
