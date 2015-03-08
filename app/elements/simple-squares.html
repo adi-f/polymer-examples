@@ -2,7 +2,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
 <!-- 'noscript' = simple element without JS, automatically registered -->
-<polymer-element name="simple-square-shadow" noscript>
+<polymer-element name="simple-square" noscript>
     <template>
         <style>
             .simple-square {
@@ -10,31 +10,24 @@
                 min-width: 50px;
                 min-height: 50px;
                 border: 5px solid olivedrab;
+                margin: 0;
+                padding: 0;
+            }
+
+            :host { /* pseudo-selector for the shadow host*/
+                display: inline-block;
+                border: 1px solid red;
                 margin: 5px;
-                padding: 5px;
+                padding: 5px;;
+            }
+
+            /* ::content selects the content inserted trough the <content>-tag */
+            ::content > * {
+                background-color: gold;
             }
         </style>
             <div class="simple-square" >
                 <content></content>
             </div>
-    </template>
-</polymer-element>
-
-<!-- TODO rename me -->
-<polymer-element name="simple-square-no-shadow" noscript>
-    <template>
-        <style>
-            .simple-square {
-                display: inline-block;
-                min-width: 50px;
-                min-height: 50px;
-                border: 5px solid orangered;
-                margin: 5px;
-                padding: 5px;
-            }
-        </style>
-        <div class="simple-square" >
-            <content></content>
-        </div>
     </template>
 </polymer-element>

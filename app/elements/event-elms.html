@@ -1,0 +1,57 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="click-button">
+    <template>
+        <style>
+            /* thanks to http://css3buttongenerator.com/ */
+            button {
+                background-image: linear-gradient(to bottom, #87c9f5, #2980b9);
+                border-radius: 5px;
+                font-family: Arial;
+                color: #ffffff;
+                padding: 10px 20px 10px 20px;
+                border: solid #1f628d 1px;
+                text-decoration: none;
+            }
+
+            button:hover {
+                background-image: linear-gradient(to bottom, #2980b9, #87c9f5);
+                text-decoration: none;
+            }
+        </style>
+        <button on-tap="{{myButtonTapped}}">Click me!</button> (and see the log output)
+    </template>
+    <script>
+        Polymer({
+                myButtonTapped: function(event, detail, sender) {
+                console.log("myButtonTapped: event.type=" + event.type + ", detail=" + detail + ", sender.nodeName=" + sender.nodeName);
+                this.fire('my-custom-event');
+
+            }
+        });
+    </script>
+</polymer-element>
+
+<polymer-element name="custom-event-catcher">
+    <template>
+        <style>
+            div {
+                display: inline-block;
+                margin: 5px;
+                padding: 5px;
+                border: 2px dotted brown;
+                border-radius: 8px;
+            }
+        </style>
+        <div on-my-custom-event="{{myListener}}" on-tap="{{myListener}}">
+            <content></content>
+        </div>
+    </template>
+    <script>
+        Polymer({
+                myListener: function(event, detail, sender) {
+                console.log("myListener: event.type=" + event.type + ", detail=" + detail + ", sender.nodeName=" + sender.nodeName);
+            }
+        });
+    </script>
+</polymer-element>

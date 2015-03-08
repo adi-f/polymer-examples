@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- adding features not yet natively supported (chrome doesen't require this -->
+        <!-- adding features not yet natively supported (chrome doesen't require this9 -->
         <script src="../../../bower_components/webcomponentsjs/webcomponents.min.js"></script>
 
         <!-- note: the Polymer library is included by the import -->
@@ -10,6 +10,7 @@
         <link rel="import" href="../../elements/simple-link.html"/>
         <link rel="import" href="../../elements/color-picker.html"/>
         <link rel="import" href="../../elements/simple-squares.html"/>
+        <link rel="import" href="../../elements/event-elms.html"/>
 
         <style>
             p {
@@ -17,7 +18,22 @@
             }
 
             .simple-square {
+                /* has no effect - class is inside a shadow root */
                 background-color: #7986cb;
+            }
+            /* inserted content is selectable from outside,*/
+            span.x {
+                background-color: mediumaquamarine;
+            }
+
+            core-icon-button {
+                position: absolute;
+                top: 3px;
+                right: 3px;
+                color: #636363;
+            }
+            :host([favorite]) core-icon-button {
+                color: #da4336;
             }
         </style>
     </head>
@@ -40,11 +56,17 @@
 
         <p/>
 
-        <simple-square-shadow>
-            <simple-square-no-shadow>
-                <simple-square-shadow/>
-            </simple-square-no-shadow>
-        </simple-square-shadow>
+        <simple-square>
+            <simple-square>
+                <simple-square><span class="x">X</span></simple-square>
+            </simple-square>
+        </simple-square>
+
+        <p/>
+
+        <custom-event-catcher>
+            <click-button></click-button>
+        </custom-event-catcher>
 
     </body>
 </html>
