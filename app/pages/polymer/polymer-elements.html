@@ -10,12 +10,12 @@
     <link rel="import" href="../../../bower_components/core-header-panel/core-header-panel.html">
     <link rel="import" href="../../../bower_components/core-toolbar/core-toolbar.html">
     <link rel="import"  href="../../../bower_components/paper-tabs/paper-tabs.html">
+    <link rel="import"  href="../../../bower_components/core-pages/core-pages.html">
 
     <style>
         html, body {
             height: 100%;
             margin: 0;
-            background-color: wheat;
             font-family: sans-serif;
         }
 
@@ -41,33 +41,30 @@
     </style>
 
 </head>
+    <body>
+        <!-- note: we can't use the {{}}-syntax outside a <polymer-element>! to enable this feature outside
+             the Polymer element definition, put your HTML inside a <template is="auto-binding"> -->
+        <template is="auto-binding">
+            <core-header-panel>
 
-<body>
+                <core-toolbar>
 
-<core-header-panel>
+                    <paper-tabs id="tabs" selected="{{mySelectedPage}}" self-end>
+                        <!-- the tabs needs the same name like the pages (or names for both) -->
+                        <paper-tab name="buttonsAndDialog" >Buttons &amp; Dialogs</paper-tab>
+                        <paper-tab name="layout">Layout</paper-tab>
+                        <paper-tab name="ajax">Ajax</paper-tab>
+                    </paper-tabs>
+                </core-toolbar>
 
-    <core-toolbar>
-        <paper-tabs id="tabs" selected="all" self-end>
-            <paper-tab name="all">All</paper-tab>
-            <paper-tab name="favorites">Favorites</paper-tab>
-        </paper-tabs>
-    </core-toolbar>
+                <!--  'class="content" fit' are layout inforamtion -->
+                <core-pages class="content" fit selected="{{mySelectedPage}}">
+                    <div name="buttonsAndDialog">One</div>
+                    <div name="layout">Two</div>
+                    <div name="ajax">Three</div>
+                </core-pages>
 
-    <div class="container" layout vertical center>
-
-        <!--<post-card>-->
-        <!--<img width="70" height="70" src="../images/avatar-06.svg">-->
-        <!--<img width="70" height="70" src="../images/avatar-07.svg">-->
-        <!--<h2>Another Developer</h2>-->
-        <!--<p>I'm composing with shadow DOM!</p>-->
-        <!--</post-card>-->
-
-        <post-list show="all"></post-list>
-
-    </div>
-
-</core-header-panel>
-
-</body>
-
+            </core-header-panel>
+        </template>
+    </body>
 </html>
