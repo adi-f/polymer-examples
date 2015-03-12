@@ -1,0 +1,51 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
+<link rel="import" href="../../bower_components/core-tooltip/core-tooltip.html">
+
+<!-- 'noscript' doesn't mean no JavaScript; it means you don't need to do the JS registration: Polymer({}) -->
+<polymer-element name="ajax-page"  noscript>
+    <template>
+        <style>
+            :host {
+                display: block;
+                padding: 2em;
+            }
+
+            span {
+                width: 5em;
+                display: inline-block;
+            }
+
+            paper-shadow {
+                margin-bottom: 1em;
+                padding: 0.2em;
+            }
+
+            core-tooltip {
+                display: block;
+            }
+        </style>
+
+
+        <core-ajax id="myAjax"
+                   auto
+                   url="../resources/movies.json"
+                   on-core-response="{{moviesLoaded}}"
+                   handleAs="json">
+        </core-ajax>
+
+        <template repeat="{{movie in $.myAjax.response}}">
+            <core-tooltip>
+                <paper-shadow class="movie">
+                    <div><span>Name</span>{{movie.name}}</div>
+                    <div><span>Year</span>{{movie.year}}</div>
+                </paper-shadow>
+
+                <!-- the 'tip' attribute marks the tooltip content-->
+                <img tip src="{{movie.poster}}">
+            </core-tooltip>
+        </template>
+
+    </template>
+</polymer-element>
