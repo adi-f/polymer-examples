@@ -1,0 +1,38 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+<!-- for more info, see https://www.polymer-project.org/0.5/docs/polymer/layout-attrs.html -->
+<polymer-element name="layout-page" noscript>
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+
+            .section {
+                border: 2px dashed #e65540;
+                margin: 10px 10px 20px 10px;
+                padding: 10px;
+            }
+        </style>
+
+        <div class="section" vertical layout style="height: 200px">
+            <paper-button primary raised>Primary</paper-button>
+            <!-- spot the flex attribute (note: container needs a height)-->
+            <paper-button flex secondary raised>Secondary</paper-button>
+            <paper-button info raised>Info</paper-button>
+        </div>
+
+        <div class="section" horizontal layout>
+            <paper-button primary raised>Primary</paper-button>
+            <!-- spot the flex attribute -->
+            <paper-button flex secondary raised>Secondary</paper-button>
+            <paper-button info raised>Info</paper-button>
+        </div>
+
+        <div class="section" horizontal layout style="height: 100px">
+            <paper-button flex self-start primary raised>Primary</paper-button>
+            <paper-button flex self-center secondary raised>Secondary</paper-button>
+            <paper-button flex self-end info raised>Info</paper-button>
+        </div>
+</polymer-element>

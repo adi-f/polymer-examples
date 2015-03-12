@@ -7,37 +7,35 @@
 
     <link rel="import" href="../../../bower_components/font-roboto/roboto.html">
 
+    <!-- Polymer elements -->
     <link rel="import" href="../../../bower_components/core-header-panel/core-header-panel.html">
     <link rel="import" href="../../../bower_components/core-toolbar/core-toolbar.html">
-    <link rel="import"  href="../../../bower_components/paper-tabs/paper-tabs.html">
-    <link rel="import"  href="../../../bower_components/core-pages/core-pages.html">
+    <link rel="import" href="../../../bower_components/paper-tabs/paper-tabs.html">
+    <link rel="import" href="../../../bower_components/core-pages/core-pages.html">
+
+    <!-- custom elements -->
+    <link rel="import" href="../../elements/button-dialog-page.html"/>
+    <link rel="import" href="../../elements/layout-page.html"/>
+
+    <!-- for more styles, see https://polymerthemes.com/ -->
+    <link rel="stylesheet" href="../../../bower_components/polymer-themes/la-resistance/theme.css">
 
     <style>
         html, body {
             height: 100%;
             margin: 0;
-            font-family: sans-serif;
         }
 
-        .container {
-            width: 80%;
-            margin: 50px auto;
-        }
-
-        core-header-panel {
-            height: 100%;
-            overflow: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        core-toolbar {
-            background: #0f9d58;
-            color: white;
-        }
         #tabs {
             width: 100%;
             margin: 0;
             user-select: none;
         }
+
+        /* /deep/ also goes into the shadow DOM*/
+        body /deep/ .mini {
+            font-size: 0.7em;
+       }
     </style>
 
 </head>
@@ -59,8 +57,15 @@
 
                 <!--  'class="content" fit' are layout inforamtion -->
                 <core-pages class="content" fit selected="{{mySelectedPage}}">
-                    <div name="buttonsAndDialog">One</div>
-                    <div name="layout">Two</div>
+                    <div name="buttonsAndDialog">
+                        <button-dialog-page>
+                            <!-- no, I don't need to import the <paper-button>, because i know <button-dialog-page> also needs it -->
+                            <paper-button primary raised>Button in the Main Page&nbsp;<span class="mini">(no effect)</span></paper-button>
+                        </button-dialog-page>
+                    </div>
+                    <div name="layout">
+                        <layout-page></layout-page>
+                    </div>
                     <div name="ajax">Three</div>
                 </core-pages>
 

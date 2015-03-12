@@ -1,0 +1,36 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-action-dialog/paper-action-dialog.html">
+
+
+<!-- This is a custom element with shadow DOM why is the theme applied?
+     Answer: The theme uses the /deep/ selector -->
+
+<polymer-element name="button-dialog-page">
+    <template>
+        <style>
+            :host {
+                padding: 5em;
+                display: block;
+            }
+        </style>
+        <!-- 'primary raised' are styling information -->
+        <paper-button primary raised on-tap="{{showDialog}}">Button in the Shadow&nbsp;<span class="mini">(click me)</span></paper-button>
+        <content></content>
+
+        <!-- backdrop = modal dialog, autoCloseDisabled = don't close on tap outside -->
+        <paper-action-dialog id="myDialog" heading="Any Imformation" backdrop autoCloseDisabled>
+            <p>Hello World!</p>
+            <!-- no event listener for closing needed, use the closeSelector attribute, its default is
+                 "[affirmative],[dismissive]" and this matches this button -->
+            <paper-button affirmative>Close</paper-button>
+        </paper-action-dialog>
+    </template>
+    <script>
+        Polymer({
+            showDialog: function() {
+                this.$.myDialog.toggle();
+            }
+        });
+    </script>
+</polymer-element>
