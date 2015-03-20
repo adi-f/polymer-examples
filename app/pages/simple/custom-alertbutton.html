@@ -5,9 +5,11 @@
         <title>Custom Components</title>
         <script>
             (function() {
+
                 // creating a custom button
                 var AlertButtonPrototpe = Object.create(HTMLButtonElement.prototype);
                 AlertButtonPrototpe.createdCallback = function () {
+                    // the 'createdCallback' is like a constructor
                     this.textContent = "Don't click me!";
                     this.addEventListener("click", function () {
                         alert("Why you clicked me? I said don't do this...");
@@ -16,7 +18,7 @@
 
                 var AlertButton = document.registerElement("alert-button", {
                     prototype: AlertButtonPrototpe,
-                    extends: 'button'
+                    extends: 'button' // for use with the 'is'-attribute
                 });
 
                 // create a nice panel
@@ -37,9 +39,9 @@
     </head>
 
 	<body>
-        <round-panel border="olive" >
+        <round-panel border="olive">
             <button>HTML Button</button>
             <button is="alert-button"></button>
-        </round-panel><!-- delete me, i don't work -->
+        </round-panel>
 	</body>
 </html>
