@@ -25,6 +25,7 @@
         Polymer({
                 myButtonTapped: function(event, detail, sender) {
                 console.log("myButtonTapped: event.type=" + event.type + ", detail=" + detail + ", sender.nodeName=" + sender.nodeName);
+                // fire your own custom event
                 this.fire('my-custom-event');
 
             }
