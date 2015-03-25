@@ -8,7 +8,7 @@ bower install
 ```
 Now, you are able have a look to the example pages. Not all pages local (local file system; no webserver),
 so you have to use a small webserver. Sorry folks, for developing I used IntelliJ who offers one out of the box,
-so I didn't incluse one - but I belive in you ;)
+so I didn't include one - but I believe in you ;)
 
 ## Index
 * [app/pages/simple/custom-alertbutton.html](https://github.com/adi-f/polymer-examples/blob/master/app/pages/simple/custom-alertbutton.html): Custom Web Components Example
