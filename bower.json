@@ -27,6 +27,8 @@
     "core-icon-button": "Polymer/core-icon-button#^0.5.5",
     "core-toolbar": "Polymer/core-toolbar#^0.5.5",
     "core-ajax": "Polymer/core-ajax#^0.5.5",
-    "polymer-themes":"0.4.1"
+    "polymer-themes":"0.4.1",
+
+    "jquery":"2.1.3"
   }
 }
