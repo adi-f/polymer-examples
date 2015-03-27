@@ -23,7 +23,8 @@
 
                 // import (=clone) it. Remember: in DOM, each node relates to one document. you can't mix elements of different nodes
                 var message1 = document.importNode(importDocument.getElementById('message_1').content, true);
-                var message2 = document.importNode(importDocument.getElementById('message_2').content, true);
+                // you cant tell jQuery to use another context (context = the document) with the 2nd parameter
+                var message2 = document.importNode($('#message_2', importDocument)[0].content, true);
 
                 $('#news').append(message1, message2);
 
