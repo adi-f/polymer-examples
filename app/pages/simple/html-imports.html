@@ -8,6 +8,12 @@
         <link rel="import" href="../../imports/import-me.html">
     </head>
     <body>
+
+        <!-- templates are not rendered. You have t access their 'content'-property the get the inner HTML -->
+        <template>
+            <div class="round-panel">I'm in a template element, I'm not visible</div>
+        </template>
+
         <div id="news" class="round-panel"></div>
 
         <script>
