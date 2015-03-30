@@ -4,7 +4,7 @@
 <link rel="import" href="../../bower_components/core-tooltip/core-tooltip.html">
 
 <!-- 'noscript' doesn't mean no JavaScript; it means you don't need to do the JS registration: Polymer({}) -->
-<polymer-element name="ajax-page"  noscript>
+<polymer-element name="ajax-page">
     <template>
         <style>
             :host {
@@ -27,14 +27,7 @@
             }
         </style>
 
-
-        <core-ajax id="myAjax"
-                   auto
-                   url="../resources/movies.json"
-                   handleAs="json">
-        </core-ajax>
-
-        <template repeat="{{movie in $.myAjax.response}}">
+        <template repeat="{{movie in movies}}">
             <core-tooltip>
                 <paper-shadow class="movie">
                     <div><span>Name</span>{{movie.name}}</div>
@@ -47,4 +40,41 @@
         </template>
 
     </template>
+
+    <script>
+        Polymer({
+            movies: [
+                {
+                    "name" : "The Lord of the Rings: The Fellowship of the Ring",
+                    "year" : 2001,
+                    "poster" : "http://ia.media-imdb.com/images/M/MV5BNTEyMjAwMDU1OV5BMl5BanBnXkFtZTcwNDQyNTkxMw@@._V1_SY317_CR1,0,214,317_AL_.jpg"
+                },
+                {
+                    "name" : "The Lord of the Rings: The Two Towers",
+                    "year" : 2002,
+                    "poster" : "http://ia.media-imdb.com/images/M/MV5BMTAyNDU0NjY4NTheQTJeQWpwZ15BbWU2MDk4MTY2Nw@@._V1_SY317_CR1,0,214,317_AL_.jpg"
+                },
+                {
+                    "name" : "The Lord of the Rings: The Return of the King",
+                    "year" : 2003,
+                    "poster" : "http://ia.media-imdb.com/images/M/MV5BMjE4MjA1NTAyMV5BMl5BanBnXkFtZTcwNzM1NDQyMQ@@._V1_SX214_AL_.jpg"
+                },
+                {
+                    "name" : "The Matrix",
+                    "year" : 1999,
+                    "poster" : "http://ia.media-imdb.com/images/M/MV5BMTkxNDYxOTA4M15BMl5BanBnXkFtZTgwNTk0NzQxMTE@._V1_SX214_AL_.jpg"
+                },
+                {
+                    "name" : "Avatar",
+                    "year" : 2009,
+                    "poster" : "http://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SY317_CR0,0,214,317_AL_.jpg"
+                },
+                {
+                    "name" : "Alien",
+                    "year" : 1979,
+                    "poster" : "http://ia.media-imdb.com/images/M/MV5BMTU1ODQ4NjQyOV5BMl5BanBnXkFtZTgwOTQ3NDU2MTE@._V1_SX214_AL_.jpg"
+                }
+            ]
+        });
+    </script>
 </polymer-element>
